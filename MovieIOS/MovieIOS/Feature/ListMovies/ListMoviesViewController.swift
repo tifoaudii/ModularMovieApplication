@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ListMoviesViewController.swift
 //  MovieIOS
 //
 //  Created by Tifo Audi Alif Putra on 12/03/22.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ListMoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .black
     }
 
 
