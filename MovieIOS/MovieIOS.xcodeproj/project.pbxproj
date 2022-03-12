@@ -15,6 +15,9 @@
 		8332F8A627DC7FCF00F562D0 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332F8A527DC7FCF00F562D0 /* AppFlow.swift */; };
 		8332F8A827DC800B00F562D0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332F8A727DC800B00F562D0 /* Router.swift */; };
 		8332F8AA27DC805C00F562D0 /* UIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332F8A927DC805C00F562D0 /* UIFactory.swift */; };
+		8332F8AC27DC856200F562D0 /* ListMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8332F8AB27DC856200F562D0 /* ListMovieViewController.xib */; };
+		8332F8AF27DC880200F562D0 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332F8AD27DC880200F562D0 /* MovieCell.swift */; };
+		8332F8B027DC880200F562D0 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8332F8AE27DC880200F562D0 /* MovieCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		8332F8A527DC7FCF00F562D0 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		8332F8A727DC800B00F562D0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8332F8A927DC805C00F562D0 /* UIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFactory.swift; sourceTree = "<group>"; };
+		8332F8AB27DC856200F562D0 /* ListMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListMovieViewController.xib; sourceTree = "<group>"; };
+		8332F8AD27DC880200F562D0 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		8332F8AE27DC880200F562D0 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				8332F88C27DC7CEB00F562D0 /* ListMoviesViewController.swift */,
+				8332F8AB27DC856200F562D0 /* ListMovieViewController.xib */,
+				8332F8AD27DC880200F562D0 /* MovieCell.swift */,
+				8332F8AE27DC880200F562D0 /* MovieCell.xib */,
 			);
 			path = ListMovies;
 			sourceTree = "<group>";
@@ -185,7 +194,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8332F8AC27DC856200F562D0 /* ListMovieViewController.xib in Resources */,
 				8332F89527DC7CEC00F562D0 /* LaunchScreen.storyboard in Resources */,
+				8332F8B027DC880200F562D0 /* MovieCell.xib in Resources */,
 				8332F89227DC7CEC00F562D0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8332F8AF27DC880200F562D0 /* MovieCell.swift in Sources */,
 				8332F88D27DC7CEB00F562D0 /* ListMoviesViewController.swift in Sources */,
 				8332F8A627DC7FCF00F562D0 /* AppFlow.swift in Sources */,
 				8332F8AA27DC805C00F562D0 /* UIFactory.swift in Sources */,
