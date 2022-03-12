@@ -17,6 +17,7 @@ class MovieCell: UICollectionViewCell {
         movieThumbnail.image = .actions
         movieTitle.textColor = .white
         movieTitle.textAlignment = .center
+        movieTitle.font = .systemFont(ofSize: 16, weight: .bold)
     }
 
 }

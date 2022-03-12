@@ -15,7 +15,7 @@ protocol UIFactory {
 final class ViewControllerFactory: UIFactory {
     
     func createListMovieViewController() -> UIViewController {
-        ListMoviesViewController(nibName: "ListMovieViewController", bundle: nil)
+        ListMoviesViewController(nibName: "ListMoviesViewController", bundle: nil)
     }
     
     func createMovieDetailViewController(movie: String) -> UIViewController {
