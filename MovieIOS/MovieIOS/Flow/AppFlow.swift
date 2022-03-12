@@ -16,6 +16,12 @@ final class AppFlow {
     }
     
     func start() {
-        router.navigateToListMovies()
+        router.navigateToListMovies { [weak self] (movie) in
+            self?.navigateToMovieDetail(movie: movie)
+        }
+    }
+    
+    private func navigateToMovieDetail(movie: String) {
+        router.navigateToMovieDetail(movie: movie)
     }
 }

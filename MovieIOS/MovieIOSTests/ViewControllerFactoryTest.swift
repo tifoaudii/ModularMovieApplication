@@ -12,7 +12,7 @@ class ViewControllerFactoryTest: XCTestCase {
     
     func test_viewControllerFactory_shouldCreateListMoviesViewController() {
         let sut = ViewControllerFactory()
-        let viewController = sut.createListMovieViewController() as! ListMoviesViewController
+        let viewController = sut.createListMovieViewController(onMovieSelected: { _ in }) as! ListMoviesViewController
         XCTAssertNotNil(viewController)
     }
 }

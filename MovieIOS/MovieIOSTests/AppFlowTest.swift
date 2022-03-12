@@ -18,18 +18,33 @@ class AppFlowTest: XCTestCase {
         XCTAssertTrue(router.navigateToListMoviesCalled)
     }
     
-    // TODO: Add testcase flow navigate to movie detail
+    func test_whenMovieSelected_shouldNavigateToMovieDetailScreen() {
+        let router = RouterSpy()
+        let sut = AppFlow(router: router)
+        
+        sut.start()
+        router.selectMovieCallback?("Iron Man")
+        
+        XCTAssertTrue(router.navigateToMovieDetailCalled)
+    }
     
     // MARK: Helper
     
     class RouterSpy: Router {
         
+        var selectMovieCallback: ((String) -> Void)?
         var navigateToListMoviesCalled = false
+        var navigateToMovieDetailCalled = false
+        var selectedMovie: String?
         
-        func navigateToListMovies() {
+        func navigateToListMovies(onMovieSelected: @escaping (String) -> Void) {
             navigateToListMoviesCalled = true
+            selectMovieCallback = onMovieSelected
         }
         
-        func navigateToMovieDetail(movie: String) {}
+        func navigateToMovieDetail(movie: String) {
+            selectedMovie = movie
+            navigateToMovieDetailCalled = true
+        }
     }
 }

@@ -8,13 +8,13 @@
 import UIKit
 
 protocol UIFactory {
-    func createListMovieViewController() -> UIViewController
+    func createListMovieViewController(onMovieSelected: @escaping (String) -> Void) -> UIViewController
     func createMovieDetailViewController(movie: String) -> UIViewController
 }
 
 final class ViewControllerFactory: UIFactory {
     
-    func createListMovieViewController() -> UIViewController {
+    func createListMovieViewController(onMovieSelected: @escaping (String) -> Void) -> UIViewController {
         ListMoviesViewController(nibName: "ListMoviesViewController", bundle: nil)
     }
     
