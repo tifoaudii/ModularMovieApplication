@@ -10,13 +10,15 @@ import Foundation
 public final class AppFlow {
     
     private let router: Router
+    private let movieListDelegate: MovieListDelegate
     
-    public init(router: Router) {
+    public init(router: Router, movieListDelegate: MovieListDelegate) {
         self.router = router
+        self.movieListDelegate = movieListDelegate
     }
     
     public func start() {
-        router.navigateToListMovies { [weak self] (movie) in
+        router.navigateToListMovies(delegate: movieListDelegate) { [weak self] (movie) in
             self?.navigateToMovieDetail(movie: movie)
         }
     }

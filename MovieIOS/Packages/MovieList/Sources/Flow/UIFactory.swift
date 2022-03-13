@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol UIFactory {
-    func createListMovieViewController(onMovieSelected: @escaping (String) -> Void) -> UIViewController
+    func createListMovieViewController(delegate: MovieListDelegate, onMovieSelected: @escaping (String) -> Void) -> UIViewController
     func createMovieDetailViewController(movie: String) -> UIViewController
 }
 
@@ -16,8 +16,8 @@ public final class ViewControllerFactory: UIFactory {
     
     public init() {}
     
-    public func createListMovieViewController(onMovieSelected: @escaping (String) -> Void) -> UIViewController {
-        MovieListViewController(nibName: nil, bundle: .module)
+    public func createListMovieViewController(delegate: MovieListDelegate, onMovieSelected: @escaping (String) -> Void) -> UIViewController {
+        MovieListViewController(delegate: delegate)
     }
     
     public func createMovieDetailViewController(movie: String) -> UIViewController {

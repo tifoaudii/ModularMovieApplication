@@ -17,6 +17,7 @@
 		83D3B29B27DDA55400B68997 /* FlowCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B29A27DDA55400B68997 /* FlowCommand.swift */; };
 		83D3B29D27DDA56B00B68997 /* WindowConfigurableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */; };
 		83D3B2A027DDAA8000B68997 /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 83D3B29F27DDAA8000B68997 /* MovieList */; };
+		83D3B2A327DDC2CA00B68997 /* MovieAdapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		83D3B29A27DDA55400B68997 /* FlowCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCommand.swift; sourceTree = "<group>"; };
 		83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowConfigurableCommand.swift; sourceTree = "<group>"; };
 		83D3B29E27DDA5DE00B68997 /* MovieList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MovieList; sourceTree = "<group>"; };
+		83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAdapterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		8332F88727DC7CEB00F562D0 /* MovieIOS */ = {
 			isa = PBXGroup;
 			children = (
+				83D3B2A127DDC2BC00B68997 /* Adapter */,
 				8332F8A027DC7F6000F562D0 /* Application */,
 				8332F89127DC7CEC00F562D0 /* Assets.xcassets */,
 				8332F89327DC7CEC00F562D0 /* LaunchScreen.storyboard */,
@@ -139,6 +142,14 @@
 				83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */,
 			);
 			path = Command;
+			sourceTree = "<group>";
+		};
+		83D3B2A127DDC2BC00B68997 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D3B2A327DDC2CA00B68997 /* MovieAdapterService.swift in Sources */,
 				83D3B29B27DDA55400B68997 /* FlowCommand.swift in Sources */,
 				83D3B29D27DDA56B00B68997 /* WindowConfigurableCommand.swift in Sources */,
 				83D3B29827DDA52C00B68997 /* SceneDelegateCommand.swift in Sources */,

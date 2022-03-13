@@ -7,6 +7,7 @@
 
 import UIKit
 import MovieList
+import Service
 
 final class FlowCommand: SceneDelegateCommand {
     
@@ -19,7 +20,8 @@ final class FlowCommand: SceneDelegateCommand {
     func executeCommand() {
         let viewControllerFactory = ViewControllerFactory()
         let router = AppRouter(navigationController: navigationController, factory: viewControllerFactory)
-        let flow = AppFlow(router: router)
+        let movieAdapterService = MovieAdapterService(service: URLSessionNetworkService(configuration: .default))
+        let flow = AppFlow(router: router, movieListDelegate: movieAdapterService)
         flow.start()
     }
 }

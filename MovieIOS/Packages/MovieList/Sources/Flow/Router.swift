@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public protocol Router {
-    func navigateToListMovies(onMovieSelected: @escaping (String) -> Void)
+    func navigateToListMovies(delegate: MovieListDelegate, onMovieSelected: @escaping (String) -> Void)
     func navigateToMovieDetail(movie: String)
 }
 
@@ -23,8 +23,8 @@ public final class AppRouter: Router {
         self.factory = factory
     }
     
-    public func navigateToListMovies(onMovieSelected: @escaping (String) -> Void) {
-        let listMovieViewController = factory.createListMovieViewController(onMovieSelected: onMovieSelected)
+    public func navigateToListMovies(delegate: MovieListDelegate ,onMovieSelected: @escaping (String) -> Void) {
+        let listMovieViewController = factory.createListMovieViewController(delegate: delegate, onMovieSelected: onMovieSelected)
         navigationController.pushViewController(listMovieViewController, animated: true)
     }
     
