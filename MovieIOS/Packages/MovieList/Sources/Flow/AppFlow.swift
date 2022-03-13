@@ -7,15 +7,15 @@
 
 import Foundation
 
-final class AppFlow {
+public final class AppFlow {
     
     private let router: Router
     
-    init(router: Router) {
+    public init(router: Router) {
         self.router = router
     }
     
-    func start() {
+    public func start() {
         router.navigateToListMovies { [weak self] (movie) in
             self?.navigateToMovieDetail(movie: movie)
         }

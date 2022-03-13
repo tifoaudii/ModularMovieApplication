@@ -7,7 +7,7 @@
 
 import UIKit
 import XCTest
-@testable import MovieIOS
+@testable import MovieList
 
 class RouterTest: XCTestCase {
     

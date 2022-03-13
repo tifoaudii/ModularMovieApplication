@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import MovieIOS
+@testable import MovieList
 
 class AppFlowTest: XCTestCase {
     

@@ -1,17 +1,17 @@
 //
-//  ListMoviesViewControllerTest.swift
+//  MovieListViewControllerTest.swift
 //  MovieIOSTests
 //
 //  Created by Tifo Audi Alif Putra on 12/03/22.
 //
 
 import XCTest
-@testable import MovieIOS
+@testable import MovieList
 
-class ListMoviesViewControllerTest: XCTestCase {
+class MovieListViewControllerTest: XCTestCase {
     
     func test_listMoviesViewController_shouldLoadCollectionView() {
-        let sut = ListMoviesViewController(nibName: "ListMoviesViewController", bundle: nil)
+        let sut = MovieListViewController(nibName: nil, bundle: .module)
         sut.loadViewIfNeeded()
         XCTAssertNotNil(sut.collectionView)
     }

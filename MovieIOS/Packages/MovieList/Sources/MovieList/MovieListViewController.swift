@@ -1,13 +1,13 @@
 //
-//  ListMoviesViewController.swift
-//  MovieIOS
+//  MovieListViewController.swift
+//  
 //
-//  Created by Tifo Audi Alif Putra on 12/03/22.
+//  Created by Tifo Audi Alif Putra on 13/03/22.
 //
 
 import UIKit
 
-class ListMoviesViewController: UIViewController {
+class MovieListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,7 +23,7 @@ class ListMoviesViewController: UIViewController {
     }
 }
 
-extension ListMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeue(MovieCell.self, for: indexPath) else {
             return UICollectionViewCell()
@@ -51,7 +51,7 @@ extension ListMoviesViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension UICollectionView {
     func register<T>(_ cell: T.Type) {
-        let cellNib = UINib(nibName: String.init(describing: T.self), bundle: nil)
+        let cellNib = UINib(nibName: String.init(describing: T.self), bundle: .module)
         register(cellNib, forCellWithReuseIdentifier: String.init(describing: T.self))
     }
     
