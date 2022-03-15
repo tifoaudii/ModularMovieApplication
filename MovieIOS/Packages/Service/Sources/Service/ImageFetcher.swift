@@ -1,49 +1,21 @@
 //
-//  NetworkService.swift
+//  ImageFetcher.swift
 //  
 //
-//  Created by Tifo Audi Alif Putra on 13/03/22.
+//  Created by Tifo Audi Alif Putra on 15/03/22.
 //
 
 import Foundation
 
-public protocol NetworkService {
-    func request<R: Request>(_ request: R, completion: @escaping (Result<R.Response, Error>) -> Void)
-}
-
-public final class URLSessionNetworkService: NetworkService {
-    
+final class ImageService {
     private let session: URLSession
     
-    public init(configuration: URLSessionConfiguration) {
+    init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
     }
     
-    public func request<R: Request>(_ request: R, completion: @escaping (Result<R.Response, Error>) -> Void) {
-        
-        guard var urlComponent = URLComponents(string: request.url) else {
-            let error = NSError(
-                domain: ErrorResponse.invalidEndpoint.rawValue,
-                code: 404,
-                userInfo: [
-                    NSLocalizedDescriptionKey: "Invalid Endpoint"
-                ]
-            )
-            
-            return completion(.failure(error))
-        }
-        
-        var queryItems: [URLQueryItem] = []
-        
-        request.queryItems.forEach {
-            let urlQueryItem = URLQueryItem(name: $0.key, value: $0.value)
-            urlComponent.queryItems?.append(urlQueryItem)
-            queryItems.append(urlQueryItem)
-        }
-        
-        urlComponent.queryItems = queryItems
-        
-        guard let url = urlComponent.url else {
+    func downloadImage(url: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: url) else {
             let error = NSError(
                 domain: ErrorResponse.invalidEndpoint.rawValue,
                 code: 404,
@@ -56,8 +28,7 @@ public final class URLSessionNetworkService: NetworkService {
         }
         
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.httpMethod = "GET"
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -87,13 +58,47 @@ public final class URLSessionNetworkService: NetworkService {
                 ))
             }
             
-            do {
-                try completion(.success(request.decode(data)))
-            } catch let error as NSError {
-                completion(.failure(error))
-            }
+            completion(.success(data))
         }
         .resume()
     }
+    
 }
 
+public final class ImageFetcher {
+    
+    private let service: ImageService
+    
+    private init(configuration: URLSessionConfiguration) {
+        self.service = ImageService(configuration: configuration)
+    }
+    
+    private var cachedData: [String: Data] = [:]
+    
+    public static func shared(
+        configuration: URLSessionConfiguration = .default
+    ) -> ImageFetcher {
+        return ImageFetcher(configuration: configuration)
+    }
+    
+    
+    public func setImage(url: String, completion: @escaping (Data?, Error?) -> Void) {
+        if let image = cachedData[url] {
+            completion(image, nil)
+        } else {
+            service.downloadImage(url: url) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.cachedData[url] = data
+                    DispatchQueue.main.async {
+                        completion(data, nil)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+    }
+}

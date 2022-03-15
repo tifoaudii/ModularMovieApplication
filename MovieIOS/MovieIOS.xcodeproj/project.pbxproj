@@ -18,6 +18,7 @@
 		83D3B29D27DDA56B00B68997 /* WindowConfigurableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */; };
 		83D3B2A027DDAA8000B68997 /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 83D3B29F27DDAA8000B68997 /* MovieList */; };
 		83D3B2A327DDC2CA00B68997 /* MovieAdapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */; };
+		83F4F81627E01CB800B06551 /* MovieListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F81527E01CB800B06551 /* MovieListRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowConfigurableCommand.swift; sourceTree = "<group>"; };
 		83D3B29E27DDA5DE00B68997 /* MovieList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MovieList; sourceTree = "<group>"; };
 		83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAdapterService.swift; sourceTree = "<group>"; };
+		83F4F81527E01CB800B06551 /* MovieListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,9 +149,18 @@
 		83D3B2A127DDC2BC00B68997 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				83F4F81427E01CAB00B06551 /* Request */,
 				83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		83F4F81427E01CAB00B06551 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				83F4F81527E01CB800B06551 /* MovieListRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				83D3B29827DDA52C00B68997 /* SceneDelegateCommand.swift in Sources */,
 				8332F88927DC7CEB00F562D0 /* AppDelegate.swift in Sources */,
 				8332F88B27DC7CEB00F562D0 /* SceneDelegate.swift in Sources */,
+				83F4F81627E01CB800B06551 /* MovieListRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

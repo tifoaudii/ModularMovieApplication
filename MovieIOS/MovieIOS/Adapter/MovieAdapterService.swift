@@ -10,55 +10,31 @@ import MovieList
 import Foundation
 import Domain
 
-struct MovieListRequest: Request {
-    
-    private let apiKey: String = "ae5b867ee790efe19598ff6108ad4e02"
-    
-    var url: String {
-        let baseURL: String = "https://api.themoviedb.org/3"
-        let path: String = "/movie/popular"
-        return baseURL + path
-    }
-    
-    var queryItems: [String : String] {
-        [
-            "api_key": apiKey
-        ]
-    }
-    
-    var method: HTTPMethod {
-        .get
-    }
-    
-    func decode(_ data: Data) throws -> [Movie] {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        
-        let response = try decoder.decode(MoviesResponse.self, from: data)
-        return response.results
-    }
-}
-
-
 final class MovieAdapterService: MovieListDelegate {
     
     private let service: NetworkService
+    private let imageFetcher: ImageFetcher
     
-    weak var output: MovieListOutput?
+    private weak var output: MovieListOutput?
     
-    init(service: NetworkService) {
+    init(service: NetworkService, imageFetcher: ImageFetcher = ImageFetcher.shared()) {
         self.service = service
+        self.imageFetcher = imageFetcher
     }
     
     func fetchMovies() {
         let request = MovieListRequest()
-        service.request(request) { result in
+        service.request(request) { [weak self] result in
             switch result {
             case .success(let movies):
-                print(movies)
+                self?.output?.displayMovies(
+                    movies: movies.map {
+                        MovieViewModel(
+                            title: $0.title,
+                            posterURL: String.init(format: "%@/%@", arguments: [Movie.baseURL, $0.posterPath ?? ""])
+                        )
+                    }
+                )
             case .failure(let error):
                 print(error)
             }
@@ -67,5 +43,9 @@ final class MovieAdapterService: MovieListDelegate {
     
     func setOutput(output: MovieListOutput) {
         self.output = output
+    }
+    
+    func fetchImage(for url: String, completion: @escaping (Data?, Error?) -> Void) {
+        imageFetcher.setImage(url: url, completion: completion)
     }
 }

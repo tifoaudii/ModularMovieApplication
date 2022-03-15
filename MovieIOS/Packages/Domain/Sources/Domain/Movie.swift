@@ -16,6 +16,10 @@ public struct MoviesResponse: Codable {
 
 public struct Movie: Codable {
     
+    public static var baseURL: String {
+        "https://image.tmdb.org/t/p/w500"
+    }
+    
     public let id: Int
     public let title: String
     public let backdropPath: String?
