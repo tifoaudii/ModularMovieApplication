@@ -20,7 +20,11 @@ final class FlowCommand: SceneDelegateCommand {
     func executeCommand() {
         let viewControllerFactory = ViewControllerFactory()
         let router = AppRouter(navigationController: navigationController, factory: viewControllerFactory)
-        let movieAdapterService = MovieAdapterService(service: URLSessionNetworkService(configuration: .default))
+        let movieAdapterService = MovieAdapterService(
+            service: URLSessionNetworkService(configuration: .default),
+            imageFetcher: ImageService(configuration: .default)
+        )
+        
         let flow = AppFlow(router: router, movieListDelegate: movieAdapterService)
         flow.start()
     }

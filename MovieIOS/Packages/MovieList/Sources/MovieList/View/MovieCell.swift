@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Service
 
 final class MovieCell: UICollectionViewCell {
     
@@ -15,7 +14,11 @@ final class MovieCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        movieThumbnail.image = .actions
+        
+        movieThumbnail.image = UIImage(systemName: "sun.max.circle.fill")
+        movieThumbnail.layer.cornerRadius = 8
+        movieThumbnail.contentMode = .scaleAspectFill
+        movieThumbnail.clipsToBounds = true
         movieTitle.textColor = .white
         movieTitle.textAlignment = .center
         movieTitle.numberOfLines = 0

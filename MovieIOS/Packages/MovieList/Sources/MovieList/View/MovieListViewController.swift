@@ -8,14 +8,8 @@
 import UIKit
 
 public protocol MovieListDelegate {
-    func fetchMovies()
-    func setOutput(output: MovieListOutput)
+    func fetchMovies(completion: @escaping ([MovieViewModel], Error?) -> Void)
     func fetchImage(for url: String, completion: @escaping (Data?, Error?) -> Void)
-}
-
-public protocol MovieListOutput: AnyObject {
-    func displayMovies(movies: [MovieViewModel])
-    func displayError(error: ErrorViewModel)
 }
 
 final class MovieListViewController: UIViewController {
@@ -43,8 +37,25 @@ final class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate.fetchMovies()
+        delegate.fetchMovies { [weak self] (movies: [MovieViewModel], error: Error?) in
+            guard error == nil else {
+                return
+            }
+            
+            self?.movies = movies
+        }
         configureCollectionView()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.shadowImage = UIImage()
+        
+        navigationController?.navigationItem.title = "Movies"
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
 
     func configureCollectionView() {
@@ -61,7 +72,6 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         
         cell.configureData(movie: movies[indexPath.item])
-        cell.downloadImage(posterUrl: movies[indexPath.item].posterURL, delegate: delegate)
         return cell
     }
     
@@ -70,7 +80,7 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: view.bounds.width / 2 , height: view.bounds.height / 3)
+        .init(width: view.bounds.width / 2 , height: view.bounds.height / 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -79,16 +89,6 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         12
-    }
-}
-
-extension MovieListViewController: MovieListOutput {
-    func displayMovies(movies: [MovieViewModel]) {
-        self.movies = movies
-    }
-    
-    func displayError(error: ErrorViewModel) {
-        
     }
 }
 

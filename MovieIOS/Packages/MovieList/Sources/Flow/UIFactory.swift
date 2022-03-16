@@ -18,7 +18,6 @@ public final class ViewControllerFactory: UIFactory {
     
     public func createListMovieViewController(delegate: MovieListDelegate, onMovieSelected: @escaping (String) -> Void) -> UIViewController {
         let movieViewController = MovieListViewController(delegate: delegate)
-        delegate.setOutput(output: movieViewController)
         return movieViewController
     }
     

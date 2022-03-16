@@ -15,34 +15,25 @@ final class MovieAdapterService: MovieListDelegate {
     private let service: NetworkService
     private let imageFetcher: ImageFetcher
     
-    private weak var output: MovieListOutput?
-    
-    init(service: NetworkService, imageFetcher: ImageFetcher = ImageFetcher.shared()) {
+    init(service: NetworkService, imageFetcher: ImageFetcher) {
         self.service = service
         self.imageFetcher = imageFetcher
     }
     
-    func fetchMovies() {
+    func fetchMovies(completion: @escaping ([MovieViewModel], Error?) -> Void) {
         let request = MovieListRequest()
-        service.request(request) { [weak self] result in
+        service.request(request) { result in
             switch result {
             case .success(let movies):
-                self?.output?.displayMovies(
-                    movies: movies.map {
-                        MovieViewModel(
-                            title: $0.title,
-                            posterURL: String.init(format: "%@/%@", arguments: [Movie.baseURL, $0.posterPath ?? ""])
-                        )
-                    }
-                )
+                DispatchQueue.main.async {
+                    completion(movies.map {
+                        MovieViewModel(movie: $0)
+                    }, nil)
+                }
             case .failure(let error):
-                print(error)
+                completion([], error)
             }
         }
-    }
-    
-    func setOutput(output: MovieListOutput) {
-        self.output = output
     }
     
     func fetchImage(for url: String, completion: @escaping (Data?, Error?) -> Void) {

@@ -7,14 +7,43 @@
 
 import Foundation
 
-final class ImageService {
+public protocol ImageFetcher {
+    func setImage(url: String, completion: @escaping (Data?, Error?) -> Void)
+}
+
+public final class ImageService: ImageFetcher {
+    
     private let session: URLSession
     
-    init(configuration: URLSessionConfiguration) {
+    public init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
     }
     
-    func downloadImage(url: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    private var cachedData: [String: Data] = [:]
+    
+    public func setImage(url: String, completion: @escaping (Data?, Error?) -> Void) {
+        if let data = cachedData[url] {
+            DispatchQueue.main.async {
+                completion(data, nil)
+            }
+        } else {
+            downloadImage(url: url) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.cachedData[url] = data
+                    DispatchQueue.main.async {
+                        completion(data, nil)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func downloadImage(url: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: url) else {
             let error = NSError(
                 domain: ErrorResponse.invalidEndpoint.rawValue,
@@ -61,44 +90,5 @@ final class ImageService {
             completion(.success(data))
         }
         .resume()
-    }
-    
-}
-
-public final class ImageFetcher {
-    
-    private let service: ImageService
-    
-    private init(configuration: URLSessionConfiguration) {
-        self.service = ImageService(configuration: configuration)
-    }
-    
-    private var cachedData: [String: Data] = [:]
-    
-    public static func shared(
-        configuration: URLSessionConfiguration = .default
-    ) -> ImageFetcher {
-        return ImageFetcher(configuration: configuration)
-    }
-    
-    
-    public func setImage(url: String, completion: @escaping (Data?, Error?) -> Void) {
-        if let image = cachedData[url] {
-            completion(image, nil)
-        } else {
-            service.downloadImage(url: url) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.cachedData[url] = data
-                    DispatchQueue.main.async {
-                        completion(data, nil)
-                    }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
-                }
-            }
-        }
     }
 }

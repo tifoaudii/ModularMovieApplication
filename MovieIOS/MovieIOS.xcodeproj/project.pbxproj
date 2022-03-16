@@ -11,6 +11,7 @@
 		8332F88B27DC7CEB00F562D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332F88A27DC7CEB00F562D0 /* SceneDelegate.swift */; };
 		8332F89227DC7CEC00F562D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8332F89127DC7CEC00F562D0 /* Assets.xcassets */; };
 		8332F89527DC7CEC00F562D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8332F89327DC7CEC00F562D0 /* LaunchScreen.storyboard */; };
+		835EFA6027E09A2E008E77DB /* MovieViewModel+Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835EFA5F27E09A2E008E77DB /* MovieViewModel+Movie.swift */; };
 		83D3B29427DD8E5E00B68997 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 83D3B29327DD8E5E00B68997 /* Domain */; };
 		83D3B29627DD910800B68997 /* Service in Frameworks */ = {isa = PBXBuildFile; productRef = 83D3B29527DD910800B68997 /* Service */; };
 		83D3B29827DDA52C00B68997 /* SceneDelegateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B29727DDA52C00B68997 /* SceneDelegateCommand.swift */; };
@@ -41,6 +42,7 @@
 		8332F89E27DC7E3500F562D0 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
 		8332F89F27DC7E5300F562D0 /* Service */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Service; sourceTree = "<group>"; };
 		8332F8B527DCF0B100F562D0 /* MovieIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		835EFA5F27E09A2E008E77DB /* MovieViewModel+Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieViewModel+Movie.swift"; sourceTree = "<group>"; };
 		83D3B29727DDA52C00B68997 /* SceneDelegateCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateCommand.swift; sourceTree = "<group>"; };
 		83D3B29A27DDA55400B68997 /* FlowCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCommand.swift; sourceTree = "<group>"; };
 		83D3B29C27DDA56B00B68997 /* WindowConfigurableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowConfigurableCommand.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				83F4F81427E01CAB00B06551 /* Request */,
 				83D3B2A227DDC2CA00B68997 /* MovieAdapterService.swift */,
+				835EFA5F27E09A2E008E77DB /* MovieViewModel+Movie.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				83D3B29B27DDA55400B68997 /* FlowCommand.swift in Sources */,
 				83D3B29D27DDA56B00B68997 /* WindowConfigurableCommand.swift in Sources */,
 				83D3B29827DDA52C00B68997 /* SceneDelegateCommand.swift in Sources */,
+				835EFA6027E09A2E008E77DB /* MovieViewModel+Movie.swift in Sources */,
 				8332F88927DC7CEB00F562D0 /* AppDelegate.swift in Sources */,
 				8332F88B27DC7CEB00F562D0 /* SceneDelegate.swift in Sources */,
 				83F4F81627E01CB800B06551 /* MovieListRequest.swift in Sources */,
