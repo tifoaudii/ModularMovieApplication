@@ -12,7 +12,8 @@ class ViewControllerFactoryTest: XCTestCase {
     
     func test_viewControllerFactory_shouldCreateListMoviesViewController() {
         let sut = ViewControllerFactory()
-        let viewController = sut.createListMovieViewController(onMovieSelected: { _ in }) as! MovieListViewController
+        let delegate = MovieListDelegateSpy()
+        let viewController = sut.createListMovieViewController(delegate: delegate)
         XCTAssertNotNil(viewController)
     }
 }

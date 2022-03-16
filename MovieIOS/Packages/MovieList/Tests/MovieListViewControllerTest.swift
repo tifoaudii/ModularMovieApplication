@@ -11,7 +11,8 @@ import XCTest
 class MovieListViewControllerTest: XCTestCase {
     
     func test_listMoviesViewController_shouldLoadCollectionView() {
-        let sut = MovieListViewController(nibName: nil, bundle: .module)
+        let delegate = MovieListDelegateSpy()
+        let sut = MovieListViewController(delegate: delegate)
         sut.loadViewIfNeeded()
         XCTAssertNotNil(sut.collectionView)
     }

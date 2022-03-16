@@ -11,21 +11,23 @@ import Service
 
 final class FlowCommand: SceneDelegateCommand {
     
-    private let navigationController: UINavigationController
+    private let factory: UIFactory
+    private let router: Router
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(factory: UIFactory, router: Router) {
+        self.factory = factory
+        self.router = router
     }
     
     func executeCommand() {
-        let viewControllerFactory = ViewControllerFactory()
-        let router = AppRouter(navigationController: navigationController, factory: viewControllerFactory)
-        let movieAdapterService = MovieAdapterService(
-            service: URLSessionNetworkService(configuration: .default),
-            imageFetcher: ImageService(configuration: .default)
-        )
+        let movieAdapterDelegate = MovieListAdapterDelegate(service: URLSessionNetworkService()) { [weak self] movie in
+            guard let self = self else { return }
+            let movieDetailDelegate = MovieDetailAdapterDelegate(movie: movie)
+            let movieDetailViewController = self.factory.createMovieDetailViewController(delegate: movieDetailDelegate)
+            self.router.navigate(to: movieDetailViewController)
+        }
         
-        let flow = AppFlow(router: router, movieListDelegate: movieAdapterService)
-        flow.start()
+        let movieListViewController = factory.createListMovieViewController(delegate: movieAdapterDelegate)
+        router.navigate(to: movieListViewController)
     }
 }

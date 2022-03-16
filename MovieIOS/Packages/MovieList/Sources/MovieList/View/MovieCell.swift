@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ImageFetcher
 
 final class MovieCell: UICollectionViewCell {
     
@@ -14,9 +15,11 @@ final class MovieCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        movieThumbnail.image = UIImage(systemName: "sun.max.circle.fill")
-        movieThumbnail.layer.cornerRadius = 8
+        configureCell()
+    }
+    
+    private func configureCell() {
+        movieThumbnail.layer.cornerRadius = 12
         movieThumbnail.contentMode = .scaleAspectFill
         movieThumbnail.clipsToBounds = true
         movieTitle.textColor = .white
@@ -27,10 +30,7 @@ final class MovieCell: UICollectionViewCell {
 
     func configureData(movie: MovieViewModel) {
         movieTitle.text = movie.title
-    }
-    
-    func downloadImage(posterUrl: String, delegate: MovieListDelegate) {
-        delegate.fetchImage(for: posterUrl) { data, error in
+        ImageService.shared().setImage(url: movie.posterURL) { data, error in
             guard let data = data, error == nil else {
                 return
             }

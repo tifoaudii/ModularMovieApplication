@@ -15,8 +15,8 @@ public final class URLSessionNetworkService: NetworkService {
     
     private let session: URLSession
     
-    public init(configuration: URLSessionConfiguration) {
-        self.session = URLSession(configuration: configuration)
+    public init(session: URLSession = URLSession(configuration: .default)) {
+        self.session = session
     }
     
     public func request<R: Request>(_ request: R, completion: @escaping (Result<R.Response, Error>) -> Void) {

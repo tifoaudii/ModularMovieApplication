@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MovieList
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -24,7 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 ),
                 
                 FlowCommand(
-                    navigationController: navigationController
+                    factory: ViewControllerFactory(),
+                    router: AppRouter(navigationController: navigationController)
                 )
             ]
         )

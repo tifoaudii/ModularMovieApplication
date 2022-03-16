@@ -8,8 +8,7 @@
 import UIKit
 
 public protocol MovieListDelegate {
-    func fetchMovies(completion: @escaping ([MovieViewModel], Error?) -> Void)
-    func fetchImage(for url: String, completion: @escaping (Data?, Error?) -> Void)
+    func fetchMovies(completion: @escaping ([MovieViewModel], ErrorViewModel?) -> Void)
 }
 
 final class MovieListViewController: UIViewController {
@@ -20,9 +19,7 @@ final class MovieListViewController: UIViewController {
     
     private var movies: [MovieViewModel] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            self.collectionView.reloadData()
         }
     }
     
@@ -37,31 +34,42 @@ final class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate.fetchMovies { [weak self] (movies: [MovieViewModel], error: Error?) in
+        configureCollectionView()
+        configureNavigationBar()
+        configureMovieListDelegate()
+    }
+
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(MovieCell.self)
+    }
+    
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.shadowImage = UIImage()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        title = "Popular Movies"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+    }
+    
+    private func configureMovieListDelegate() {
+        delegate.fetchMovies { [weak self] (movies: [MovieViewModel], error: ErrorViewModel?) in
             guard error == nil else {
                 return
             }
             
             self?.movies = movies
         }
-        configureCollectionView()
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .black
-        appearance.shadowImage = UIImage()
-        
-        navigationController?.navigationItem.title = "Movies"
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
-    }
-
-    func configureCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(MovieCell.self)
     }
 }
 
@@ -77,6 +85,10 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        movies[indexPath.item].selection()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

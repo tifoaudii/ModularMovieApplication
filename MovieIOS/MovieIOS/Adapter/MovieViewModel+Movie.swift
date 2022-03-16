@@ -9,10 +9,11 @@ import MovieList
 import Domain
 
 extension MovieViewModel {
-    init(movie: Movie) {
+    init(movie: Movie, selection: @escaping () -> Void) {
         self.init(
             title: movie.title,
-            posterURL: String.init(format: "%@/%@", arguments: [Movie.baseURL, movie.posterPath ?? ""])
+            posterURL: String.init(format: "%@/%@", arguments: [Movie.baseURL, movie.posterPath ?? ""]),
+            selection: selection
         )
     }
 }

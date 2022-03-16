@@ -7,16 +7,17 @@ let package = Package(
     name: "MovieList",
     platforms: [.iOS(.v15)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MovieList",
             targets: ["MovieList"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "ImageFetcher" ,path: "../ImageFetcher")
+    ],
     targets: [
         .target(
             name: "MovieList",
-            dependencies: [],
+            dependencies: ["ImageFetcher"],
             path: "Sources"
         ),
         .testTarget(
