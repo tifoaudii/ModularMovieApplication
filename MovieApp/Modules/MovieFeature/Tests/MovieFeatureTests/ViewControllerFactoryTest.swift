@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MovieList
+@testable import MovieFeature
 
 class ViewControllerFactoryTest: XCTestCase {
     
@@ -14,6 +14,13 @@ class ViewControllerFactoryTest: XCTestCase {
         let sut = ViewControllerFactory()
         let delegate = MovieListDelegateSpy()
         let viewController = sut.createListMovieViewController(delegate: delegate)
+        XCTAssertNotNil(viewController)
+    }
+    
+    func test_viewControllerFactory_shouldCreateMovieDetailViewController() {
+        let sut = ViewControllerFactory()
+        let delegate = MovieDetailDelegateSpy()
+        let viewController = sut.createMovieDetailViewController(delegate: delegate)
         XCTAssertNotNil(viewController)
     }
 }

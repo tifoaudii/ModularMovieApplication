@@ -23,7 +23,18 @@
 		838EAA9427E236090060EB0D /* MovieDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 838EAA9327E236090060EB0D /* MovieDomain */; };
 		838EAA9627E2360C0060EB0D /* Service in Frameworks */ = {isa = PBXBuildFile; productRef = 838EAA9527E2360C0060EB0D /* Service */; };
 		83FFB40A27E2E47E00B534CB /* MovieDetailViewModel+Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FFB40927E2E47E00B534CB /* MovieDetailViewModel+Movie.swift */; };
+		83FFB41D27E31C4300B534CB /* FlowCommandTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FFB41C27E31C4300B534CB /* FlowCommandTest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83FFB41727E31C0900B534CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 838EAA3F27E2319A0060EB0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 838EAA4627E2319A0060EB0D;
+			remoteInfo = MovieApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		838EAA4727E2319A0060EB0D /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +55,8 @@
 		838EAA8727E235CE0060EB0D /* MovieListAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListAdapterDelegate.swift; sourceTree = "<group>"; };
 		838EAA8C27E235D20060EB0D /* MovieListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRequest.swift; sourceTree = "<group>"; };
 		83FFB40927E2E47E00B534CB /* MovieDetailViewModel+Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewModel+Movie.swift"; sourceTree = "<group>"; };
+		83FFB41327E31C0900B534CB /* MovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83FFB41C27E31C4300B534CB /* FlowCommandTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCommandTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +70,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83FFB41027E31C0900B534CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +85,7 @@
 			children = (
 				838EAA6827E233D80060EB0D /* Modules */,
 				838EAA4927E2319A0060EB0D /* MovieApp */,
+				83FFB41427E31C0900B534CB /* MovieAppTests */,
 				838EAA4827E2319A0060EB0D /* Products */,
 				838EAA8E27E236020060EB0D /* Frameworks */,
 			);
@@ -74,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				838EAA4727E2319A0060EB0D /* MovieApp.app */,
+				83FFB41327E31C0900B534CB /* MovieAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +170,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		83FFB41427E31C0900B534CB /* MovieAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				83FFB41C27E31C4300B534CB /* FlowCommandTest.swift */,
+			);
+			path = MovieAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,6 +203,24 @@
 			productReference = 838EAA4727E2319A0060EB0D /* MovieApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		83FFB41227E31C0900B534CB /* MovieAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83FFB41927E31C0900B534CB /* Build configuration list for PBXNativeTarget "MovieAppTests" */;
+			buildPhases = (
+				83FFB40F27E31C0900B534CB /* Sources */,
+				83FFB41027E31C0900B534CB /* Frameworks */,
+				83FFB41127E31C0900B534CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83FFB41827E31C0900B534CB /* PBXTargetDependency */,
+			);
+			name = MovieAppTests;
+			productName = MovieAppTests;
+			productReference = 83FFB41327E31C0900B534CB /* MovieAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -185,6 +233,11 @@
 				TargetAttributes = {
 					838EAA4627E2319A0060EB0D = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					83FFB41227E31C0900B534CB = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+						TestTargetID = 838EAA4627E2319A0060EB0D;
 					};
 				};
 			};
@@ -204,6 +257,7 @@
 			projectRoot = "";
 			targets = (
 				838EAA4627E2319A0060EB0D /* MovieApp */,
+				83FFB41227E31C0900B534CB /* MovieAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -215,6 +269,13 @@
 			files = (
 				838EAA5727E2319B0060EB0D /* LaunchScreen.storyboard in Resources */,
 				838EAA5427E2319B0060EB0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83FFB41127E31C0900B534CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +300,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83FFB40F27E31C0900B534CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83FFB41D27E31C4300B534CB /* FlowCommandTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83FFB41827E31C0900B534CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 838EAA4627E2319A0060EB0D /* MovieApp */;
+			targetProxy = 83FFB41727E31C0900B534CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		838EAA5527E2319B0060EB0D /* LaunchScreen.storyboard */ = {
@@ -423,6 +500,55 @@
 			};
 			name = Release;
 		};
+		83FFB41A27E31C0900B534CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66B8DPX244;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tifoaudi.MovieAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieApp.app/MovieApp";
+			};
+			name = Debug;
+		};
+		83FFB41B27E31C0900B534CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66B8DPX244;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tifoaudi.MovieAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieApp.app/MovieApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -440,6 +566,15 @@
 			buildConfigurations = (
 				838EAA5C27E2319B0060EB0D /* Debug */,
 				838EAA5D27E2319B0060EB0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83FFB41927E31C0900B534CB /* Build configuration list for PBXNativeTarget "MovieAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83FFB41A27E31C0900B534CB /* Debug */,
+				83FFB41B27E31C0900B534CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

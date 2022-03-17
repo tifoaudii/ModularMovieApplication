@@ -18,6 +18,7 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieOverview: UILabel!
+    @IBOutlet weak var voteAverage: UILabel!
     
     private let delegate: MovieDetailDelegate
     
@@ -46,6 +47,7 @@ final class MovieDetailViewController: UIViewController {
         title = movieViewModel.title
         movieTitle.text = movieViewModel.title
         movieOverview.text = movieViewModel.overview
+        voteAverage.text = movieViewModel.voteAveragePercent
         posterImage.kf.setImage(with: URL(string: movieViewModel.posterURL), placeholder: nil)
     }
     

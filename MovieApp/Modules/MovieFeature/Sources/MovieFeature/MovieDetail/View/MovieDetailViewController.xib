@@ -15,6 +15,7 @@
                 <outlet property="movieTitle" destination="A6Q-Ny-lHA" id="H0X-gk-jqX"/>
                 <outlet property="posterImage" destination="5YK-qe-dv7" id="Zck-kI-AiT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voteAverage" destination="OKS-Pp-zum" id="gEV-je-nR9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -71,16 +72,35 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9h-vH-6Kq">
+                                    <rect key="frame" x="8" y="506" width="398" height="24"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKS-Pp-zum">
+                                    <rect key="frame" x="8" y="538" width="398" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="J9h-vH-6Kq" firstAttribute="top" secondItem="MNz-co-Oiq" secondAttribute="bottom" constant="12" id="8gO-f1-6wV"/>
                                 <constraint firstItem="MNz-co-Oiq" firstAttribute="top" secondItem="uUX-2a-WSa" secondAttribute="bottom" id="BrY-ul-iGu"/>
+                                <constraint firstAttribute="trailing" secondItem="J9h-vH-6Kq" secondAttribute="trailing" constant="8" id="Fna-YK-1us"/>
+                                <constraint firstItem="OKS-Pp-zum" firstAttribute="top" secondItem="J9h-vH-6Kq" secondAttribute="bottom" constant="8" symbolic="YES" id="Jfq-5W-AKW"/>
                                 <constraint firstItem="uUX-2a-WSa" firstAttribute="leading" secondItem="Xpn-Pt-Cbp" secondAttribute="leading" id="PQv-Dm-eWB"/>
                                 <constraint firstItem="uUX-2a-WSa" firstAttribute="top" secondItem="Xpn-Pt-Cbp" secondAttribute="top" id="V4A-0w-AIv"/>
                                 <constraint firstItem="MNz-co-Oiq" firstAttribute="leading" secondItem="Xpn-Pt-Cbp" secondAttribute="leading" constant="8" id="dZC-wc-7Ur"/>
                                 <constraint firstAttribute="trailing" secondItem="MNz-co-Oiq" secondAttribute="trailing" constant="12" id="gOl-fu-jOD"/>
                                 <constraint firstAttribute="trailing" secondItem="uUX-2a-WSa" secondAttribute="trailing" id="h87-gg-8T8"/>
+                                <constraint firstAttribute="trailing" secondItem="OKS-Pp-zum" secondAttribute="trailing" constant="8" id="hTj-rl-dO2"/>
+                                <constraint firstItem="J9h-vH-6Kq" firstAttribute="leading" secondItem="Xpn-Pt-Cbp" secondAttribute="leading" constant="8" id="kFD-gx-5qC"/>
                                 <constraint firstAttribute="bottom" secondItem="uUX-2a-WSa" secondAttribute="bottom" multiplier="1.85" constant="20" symbolic="YES" id="mBO-Qw-G4W"/>
+                                <constraint firstItem="OKS-Pp-zum" firstAttribute="leading" secondItem="Xpn-Pt-Cbp" secondAttribute="leading" constant="8" id="sEQ-xe-reH"/>
                             </constraints>
                         </view>
                     </subviews>
