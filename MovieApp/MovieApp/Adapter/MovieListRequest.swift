@@ -11,7 +11,7 @@ import Foundation
 
 struct MovieListRequest: Request {
     
-    private let apiKey: String = "ae5b867ee790efe19598ff6108ad4e02"
+    private let apiKey: String = "register your API key"
     
     var url: String {
         let baseURL: String = "https://api.themoviedb.org/3"
